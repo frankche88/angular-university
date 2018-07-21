@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { map } from "rxjs/operators";
 
-import { STUDENTS } from './mock-students'
 import { Student } from './student';
 import { MessageService } from './message.service';
 
@@ -19,15 +19,24 @@ export class StudentService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
-  getStudents(): Observable<Student[]> {
+  getStudents(type: string): Observable<Student[]> {
+    let url = this.studentsUrl;
+    if(type && type !== 'all') {
+      url = this.studentsUrl + "/" + type;
+    }
     this.messageService.add('StudentService: fetched students');
-    return this.http.get<Student[]>(this.studentsUrl)
+    return this.http.get<Student[]>(url)
   }
 
-  getStudent(id: number): Observable<Student> {
+  getStudent(id: string): Observable<Student> {
     // TODO: send the message _after_ fetching the hero
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
-    return of(STUDENTS.find(student => student.id === id));
+    this.messageService.add(`StudentService: fetched student id=${id}`);
+
+    return this.getStudents('all').pipe(
+      map(students => students.find(student => student.id === id))
+    );
+
+    //return of(STUDENTS.find(student => student.id === id));
   }
 
   private log(message: string) {

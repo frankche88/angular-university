@@ -1,9 +1,9 @@
 <div *ngIf="student">
 <h2>{{student.nombre | uppercase }} Details</h2>
-<div><span>id: </span>{{student.id}}</div>
-<div><label>name:
-    <input [(ngModel)]="student.nombre" placeholder="name">
-    </label>
-</div>
+<div class="students"><span class="badge">id: </span>{{student.id}}</div>
+<div class="students"><span class="badge">name: </span>{{student.nombre}}</div>
+<div class="students"><span class="badge">lastname: </span>{{student.apellido}}</div>
+<div class="students"><span class="badge">type: </span>{{student.tipo}}</div>
+<div class="students"><span class="badge">amount: </span>{{student.montoBeca}}</div>
 <button (click)="goBack()">go back</button>
 </div>
