@@ -13,7 +13,7 @@ import { MessageService } from './message.service';
 })
 export class StudentService {
 
-  private studentsUrl = 'api/alumnos';  // URL to web api
+  private studentsUrl = 'http://localhost:8080/api/alumnos';  // URL to web api
 
   constructor(
     private http: HttpClient,
