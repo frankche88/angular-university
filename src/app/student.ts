@@ -1,6 +1,9 @@
 export class Student {
   id: number;
-  name: string;
+  nombre: string;
+  apellido: string;
+  tipo: string;
+  montoBeca: number;
   //lastname: string;
   //type: string;
   //amount: number;
