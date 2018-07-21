@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from "rxjs/operators";
 
+import { environment } from '../environments/environment';
+
 import { Student } from './student';
 import { MessageService } from './message.service';
 
@@ -13,7 +15,7 @@ import { MessageService } from './message.service';
 })
 export class StudentService {
 
-  private studentsUrl = 'http://localhost:8080/api/alumnos';  // URL to web api
+  private studentsUrl = environment.apiUrl + 'alumnos';  // URL to web api
 
   constructor(
     private http: HttpClient,
