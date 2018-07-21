@@ -9,17 +9,17 @@ import { StudentService } from '../student.service';
 })
 export class DashboardComponent implements OnInit {
 
-  students: Student[];
+  types: string[];
 
   constructor(private studentService: StudentService) { }
 
   ngOnInit() {
-    this.getStudents();
+    this.getTypes();
   }
 
-  getStudents(): void {
-    this.studentService.getStudents()
-     .subscribe(students => this.students = students.slice(1, 5));
+  getTypes(): void {
+
+    this.types = ['all', 'PREGRADO','MAESTRIA','DOCTORADO'];
   }
 
 }
