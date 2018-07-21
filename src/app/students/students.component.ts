@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { StudentService } from '../student.service';
 import { Student } from '../student';
 
@@ -10,16 +11,10 @@ import { Student } from '../student';
 export class StudentsComponent implements OnInit {
   students: Student[];
 
-  selectedStudent: Student;
-
   constructor(private studentService: StudentService) { }
 
   ngOnInit() {
     this.getStudents();
-  }
-
-  onSelect(student: Student) {
-    this.selectedStudent = student;
   }
 
   getStudents(): void {
